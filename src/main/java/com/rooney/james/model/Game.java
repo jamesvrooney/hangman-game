@@ -3,7 +3,6 @@ package com.rooney.james.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,22 +18,26 @@ public class Game {
     private GameState gameState = GameState.IN_PROGRESS;
     private String word;
     private char guess;
-    private int numRemainingGuesses = 10;
+    private int numRemainingIncorrectGuesses = 10;
     private String existingGuessedLetters;
+    private boolean wordContainsGuessedLetter;
 
     public Game(String randomWord) {
         this.word = randomWord;
         this.existingGuessedLetters = word.replaceAll(".", "_");
-        this.numRemainingGuesses = 10;
+        this.numRemainingIncorrectGuesses = 10;
     }
 
     public void checkGuess(char guessedLetter) {
+        wordContainsGuessedLetter = false;
         String guessedLetterAsString = Character.toString(guessedLetter);
 
         if (word.contains(guessedLetterAsString)) {
             updateExistingGuessedLetters(guessedLetter);
+            wordContainsGuessedLetter = true;
         } else {
-            numRemainingGuesses--;
+            numRemainingIncorrectGuesses--;
+            wordContainsGuessedLetter = false;
         }
 
         checkState();
@@ -55,7 +58,7 @@ public class Game {
     private void checkState() {
         if (word.equals(existingGuessedLetters)) {
             gameState = GameState.WON;
-        } else if (numRemainingGuesses == 0) {
+        } else if (numRemainingIncorrectGuesses == 0) {
             gameState = GameState.LOST;
         }
     }
