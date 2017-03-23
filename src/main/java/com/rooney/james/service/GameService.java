@@ -8,5 +8,5 @@ import com.rooney.james.model.Game;
 public interface GameService {
     Game createNewGame();
 
-    Game checkGuess(int gameId, char guessedLetter);
+    Game checkGuess(Long gameId, char guessedLetter);
 }

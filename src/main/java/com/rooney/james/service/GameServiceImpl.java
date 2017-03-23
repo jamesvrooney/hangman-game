@@ -4,6 +4,7 @@ import com.rooney.james.model.Game;
 import com.rooney.james.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game checkGuess(int gameId, char guessedLetter) {
+    @Transactional
+    public Game checkGuess(Long gameId, char guessedLetter) {
         Game game = gameRepository.findOne(gameId);
 
         game.checkGuess(guessedLetter);

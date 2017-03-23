@@ -3,21 +3,22 @@ package com.rooney.james.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by jamesvrooney on 22/03/17.
  */
 @Entity
+@Table(name = "game")
 @Data @NoArgsConstructor
 public class Game {
-    @Id @GeneratedValue
-    private int id;
-    private GameState gameState = GameState.IN_PROGRESS;
+    @Id
+    @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="game_seq", allocationSize=100)
+    private Long id;
+    private String gameState = GameState.IN_PROGRESS.name();
     private String word;
-    private char guess;
+    private char guess = ' ';
     private int numRemainingIncorrectGuesses = 10;
     private String existingGuessedLetters;
     private boolean wordContainsGuessedLetter;
@@ -57,9 +58,9 @@ public class Game {
 
     private void checkState() {
         if (word.equals(existingGuessedLetters)) {
-            gameState = GameState.WON;
+            gameState = GameState.WON.name();
         } else if (numRemainingIncorrectGuesses == 0) {
-            gameState = GameState.LOST;
+            gameState = GameState.LOST.name();
         }
     }
 }

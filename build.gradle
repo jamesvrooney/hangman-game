@@ -27,9 +27,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('com.h2database:h2')
-	runtime('mysql:mysql-connector-java')
-//	compileOnly('org.projectlombok:lombok')
-//	compile('org.projectlombok:lombok')
-	compile('org.projectlombok:lombok:1.16.6')
+//	runtime('mysql:mysql-connector-java')
+	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
