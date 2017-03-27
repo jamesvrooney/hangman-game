@@ -33,6 +33,7 @@ public class GameServiceImpl implements GameService {
         words.add("gorilla");
         words.add("chimpanzee");
         words.add("alligator");
+        words.add("giraffe");
 
         return words;
     }

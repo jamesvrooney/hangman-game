@@ -4,6 +4,7 @@ package com.rooney.james.model;
  * Created by jamesvrooney on 22/03/17.
  */
 public enum GameState {
+    INIT("INIT"),
     WON("WON"),
     LOST("LOST"),
     IN_PROGRESS("IN_PROGRESS");

@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../../css/games.css" th:href="@{/css/games.css}" />
     <title>Title</title>
 </head>
 <body>
-My name is James
+My namne is James
+
+<div class="container">
+    <div class="btn-toolbar">
+        <div class="btn-group btn-group-sm">
+            <button id="button-a" class="btn btn-default alphabeth-button" type="button" value="A">A</button>
+            <button id="button-b" class="btn btn-default alphabeth-button" type="button" value="B">B</button>
+            <button id="button-c" class="btn btn-default alphabeth-button" type="button" value="C">C</button>
+            <button id="button-d" class="btn btn-default alphabeth-button" type="button" value="D">D</button>
+            <button id="button-e" class="btn btn-default alphabeth-button" type="button" value="E">E</button>
+            <button id="button-f" class="btn btn-default alphabeth-button" type="button" value="F">F</button>
+            <button id="button-g" class="btn btn-default alphabeth-button" type="button" value="G">G</button>
+            <button id="button-h" class="btn btn-default alphabeth-button" type="button" value="H">H</button>
+            <button id="button-i" class="btn btn-default alphabeth-button" type="button" value="I">I</button>
+            <button id="button-j" class="btn btn-default alphabeth-button" type="button" value="J">J</button>
+            <button id="button-k" class="btn btn-default alphabeth-button" type="button" value="K">K</button>
+            <button id="button-l" class="btn btn-default alphabeth-button" type="button" value="L">L</button>
+            <button id="button-m" class="btn btn-default alphabeth-button" type="button" value="M">M</button>
+            <button id="button-n" class="btn btn-default alphabeth-button" type="button" value="N">N</button>
+            <button id="button-o" class="btn btn-default alphabeth-button" type="button" value="O">O</button>
+            <button id="button-p" class="btn btn-default alphabeth-button" type="button" value="P">P</button>
+            <button id="button-q" class="btn btn-default alphabeth-button" type="button" value="Q">Q</button>
+            <button id="button-r" class="btn btn-default alphabeth-button" type="button" value="R">R</button>
+            <button id="button-s" class="btn btn-default alphabeth-button" type="button" value="S">S</button>
+            <button id="button-t" class="btn btn-default alphabeth-button" type="button" value="T">T</button>
+            <button id="button-u" class="btn btn-default alphabeth-button" type="button" value="U">U</button>
+            <button id="button-v" class="btn btn-default alphabeth-button" type="button" value="V">V</button>
+            <button id="button-w" class="btn btn-default alphabeth-button" type="button" value="W">W</button>
+            <button id="button-x" class="btn btn-default alphabeth-button" type="button" value="X">X</button>
+            <button id="button-y" class="btn btn-default alphabeth-button" type="button" value="Y">Y</button>
+            <button id="button-z" class="btn btn-default alphabeth-button" type="button" value="Z">Z</button>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" th:src="@{/js/jquery-3.1.1.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/hangmanGame.js}"></script>
+
 </body>
 </html>
