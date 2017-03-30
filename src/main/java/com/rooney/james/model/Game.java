@@ -1,7 +1,10 @@
 package com.rooney.james.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 
@@ -10,18 +13,24 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "game")
-@Data @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class Game {
     @Id
     @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="game_seq", allocationSize=100)
     private Long id;
-    private String gameState = GameState.IN_PROGRESS.name();
+    private String gameState = GameState.INIT.name();
     private String word;
     private char guess = ' ';
     private int numRemainingIncorrectGuesses = 10;
     private String existingGuessedLetters;
     private boolean wordContainsGuessedLetter;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    @JsonBackReference
+    private Player player;
 
     public Game(String randomWord) {
         this.word = randomWord;
@@ -57,10 +66,57 @@ public class Game {
     }
 
     private void checkState() {
+        if (gameState.equals(GameState.INIT.getGameState())) {
+            gameState = GameState.IN_PROGRESS.name();
+        }
+
         if (word.equals(existingGuessedLetters)) {
             gameState = GameState.WON.name();
         } else if (numRemainingIncorrectGuesses == 0) {
             gameState = GameState.LOST.name();
         }
+    }
+
+    /*@Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", gameState='" + gameState + '\'' +
+                ", word='" + word + '\'' +
+                ", guess=" + guess +
+                ", numRemainingIncorrectGuesses=" + numRemainingIncorrectGuesses +
+                ", existingGuessedLetters='" + existingGuessedLetters + '\'' +
+                ", wordContainsGuessedLetter=" + wordContainsGuessedLetter +
+                ", player=" + player +
+                '}';
+    }*/
+
+    @Override
+    public int hashCode() {
+        HashCodeBuilder hcb = new HashCodeBuilder();
+        hcb.append(id);
+        hcb.append(word);
+        hcb.append(player);
+
+        return hcb.toHashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+
+        if (!(obj instanceof Game)) {
+            return false;
+        }
+
+        Game that = (Game) obj;
+
+        EqualsBuilder eb = new EqualsBuilder();
+        eb.append(word, that.word);
+        eb.append(player, that.player);
+
+        return eb.isEquals();
     }
 }

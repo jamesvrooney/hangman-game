@@ -30,4 +30,6 @@ dependencies {
 //	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+	compile ('org.apache.commons:commons-lang3:3.0')
 }
