@@ -17,12 +17,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Game {
     @Id
-    @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="game_seq", allocationSize=100)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
+//    @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="game_seq", allocationSize=100)
     private Long id;
     private String gameState = GameState.INIT.name();
     private String word;
-    private char guess = ' ';
+    private String guess = " ";
     private int numRemainingIncorrectGuesses = 10;
     private String existingGuessedLetters;
     private boolean wordContainsGuessedLetter;
@@ -76,20 +77,6 @@ public class Game {
             gameState = GameState.LOST.name();
         }
     }
-
-    /*@Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", gameState='" + gameState + '\'' +
-                ", word='" + word + '\'' +
-                ", guess=" + guess +
-                ", numRemainingIncorrectGuesses=" + numRemainingIncorrectGuesses +
-                ", existingGuessedLetters='" + existingGuessedLetters + '\'' +
-                ", wordContainsGuessedLetter=" + wordContainsGuessedLetter +
-                ", player=" + player +
-                '}';
-    }*/
 
     @Override
     public int hashCode() {

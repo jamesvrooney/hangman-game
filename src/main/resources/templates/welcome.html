@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+</head>
+<body>
+<div class="container">
+    <h3>Welcome to the jungle</h3>
+
+    <a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+
+    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+
+<button id="test-button-jr">Test Me!</button>
+
+<script type="text/javascript" src="/static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<!--<script type="text/javascript" src="/static/js/test.js" th:src="@{/js/test.js}"></script>-->
+</body>
+</html>

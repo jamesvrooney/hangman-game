@@ -9,6 +9,13 @@ import java.util.Set;
  * Created by jamesvrooney on 22/03/17.
  */
 public interface PlayerService {
-    Player createNewPlayer();
+    /*Player createNewPlayer();
     Set<Game> getGamesForPlayer(Long playerId);
+
+    void save(Player player);
+    Player findByUsername(String username);*/
+
+    void save(Player player);
+
+    Player findByUsername(String username);
 }

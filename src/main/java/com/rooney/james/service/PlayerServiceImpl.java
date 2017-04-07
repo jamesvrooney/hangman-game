@@ -4,8 +4,11 @@ import com.rooney.james.model.Game;
 import com.rooney.james.model.Player;
 import com.rooney.james.repository.GameRepository;
 import com.rooney.james.repository.PlayerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,12 +20,17 @@ public class PlayerServiceImpl implements PlayerService {
     private PlayerRepository playerRepository;
     private GameRepository gameRepository;
 
-    public PlayerServiceImpl(PlayerRepository playerRepository, GameRepository gameRepository) {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public PlayerServiceImpl(PlayerRepository playerRepository,
+                             GameRepository gameRepository,
+                             BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.playerRepository = playerRepository;
         this.gameRepository = gameRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    @Override
+    /*@Override
     public Player createNewPlayer() {
         Player player = new Player();
 
@@ -41,4 +49,31 @@ public class PlayerServiceImpl implements PlayerService {
 
         return games;
     }
+
+    @Override
+    public void save(Player user) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setRoles(new HashSet<>(roleRepository.findAll()));
+        playerRepository.save(user);
+    }
+
+    @Override
+    public Player findByUsername(String username) {
+        return playerRepository.findByUsername(username);
+    }*/
+
+
+    @Override
+    public void save(Player player) {
+        player.setPassword(bCryptPasswordEncoder.encode(player.getPassword()));
+
+        playerRepository.save(player);
+    }
+
+    @Override
+    public Player findByUsername(String username) {
+        return playerRepository.findByUsername(username);
+    }
+
+
 }

@@ -2,14 +2,12 @@ package com.rooney.james.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,25 +19,19 @@ import java.util.Set;
 @NoArgsConstructor
 public class Player {
     @Id
-    @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
-    @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="player_seq", allocationSize=100)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(generator="SEQUENCE_GENERATOR", strategy = GenerationType.SEQUENCE)
+//    @SequenceGenerator(name="SEQUENCE_GENERATOR",sequenceName="player_seq", allocationSize=100)
     private Long id;
     private String username;
     private String password;
 
+    @Transient
+    private String passwordConfirm;
+
     @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
     @JsonManagedReference
     Set<Game> games = new HashSet<>();
-
-    /*@Override
-    public String toString() {
-        return "Player{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", games=" + games +
-                '}';
-    }*/
 
     @Override
     public String toString() {

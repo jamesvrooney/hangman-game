@@ -38,21 +38,21 @@ public class PlayerController {
         return "index";
     }*/
 
-    @PostMapping("/hangman/player/new")
+    /*@PostMapping("/hangman/player/new")
     @ResponseBody
     public Player createNewPlayer() {
         Player player = playerService.createNewPlayer();
 
         return player;
-    }
+    }*/
 
-    @GetMapping("/hangman/player/{playerId}/games")
+    /*@GetMapping("/hangman/player/{playerId}/games")
     @ResponseBody
     public Set<Game> getPlayerGames(@PathVariable Long playerId) {
         Set<Game> gamesForPlayer = gameService.getGamesForPlayer(playerId);
 
         return gamesForPlayer;
-    }
+    }*/
 
     /*@PostMapping("/game/{gameId}/{guessedLetter}")
     @ResponseBody

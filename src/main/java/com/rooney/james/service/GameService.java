@@ -12,5 +12,5 @@ public interface GameService {
 
     Game checkGuess(Long gameId, char guessedLetter);
 
-    Set<Game> getGamesForPlayer(Long playerId);
+//    Set<Game> getGamesForPlayer(Long playerId);
 }

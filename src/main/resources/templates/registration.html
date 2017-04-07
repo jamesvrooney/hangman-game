@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" th:href="@{/css/common.css}"/>
+</head>
+<body>
+<div class="container">
+
+    <!--<form action="/login" th:action="@{/login}" method="POST" class="form-signin">
+        <h2 class="form-heading">Log in</h2>
+
+        <div class="form-group ${error != null ? 'has-error' : ''}">
+            &lt;!&ndash;<span>${message}</span>&ndash;&gt;
+
+            <input name="username" type="text" class="form-control" placeholder="Username" autofocus="true"/>
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            &lt;!&ndash;<span>${error}</span>&ndash;&gt;
+
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+            <h4 class="text-center"><a href="/registration" th:href="@{/registration}">Create an account</a></h4>
+        </div>
+
+    </form>-->
+
+    <form action="#" th:action="@{/registration}" th:object="${playerForm}" method="post">
+        <h2 class="form-signin-heading">Create your account</h2>
+
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <input type="text" th:field="*{username}" placeholder="Username" class="form-control" autofocus="true" />
+        </div>
+
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <input type="password" th:field="*{password}" placeholder="Password" class="form-control" autofocus="true" />
+        </div>
+
+        <div class="form-group ${status.error ? 'has-error' : ''}">
+            <input type="password" th:field="*{passwordConfirm}" placeholder="Confirm your password" class="form-control" autofocus="true" />
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>
+
+    <!--<form method="POST" modelAttribute="userForm" class="form-signin">
+        <h2 class="form-signin-heading">Create your account</h2>
+        <spring:bind path="username">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="text" path="username" class="form-control" placeholder="Username"
+                            autofocus="true"></form:input>
+                <form:errors path="username"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="password">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
+                <form:errors path="password"></form:errors>
+            </div>
+        </spring:bind>
+
+        <spring:bind path="passwordConfirm">
+            <div class="form-group ${status.error ? 'has-error' : ''}">
+                <form:input type="password" path="passwordConfirm" class="form-control"
+                            placeholder="Confirm your password"></form:input>
+                <form:errors path="passwordConfirm"></form:errors>
+            </div>
+        </spring:bind>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </form>-->
+
+</div>
+
+<button id="test-button-jr">Test Me!</button>
+
+<script type="text/javascript" src="/static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" src="/static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="/static/js/test.js" th:src="@{/js/test.js}"></script>
+</body>
+</html>

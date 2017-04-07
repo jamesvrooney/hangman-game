@@ -4,7 +4,9 @@ CREATE SEQUENCE player_seq START WITH 0;
 CREATE TABLE player (
 	id NUMBER(19) NOT NULL PRIMARY KEY,
     username VARCHAR(255),
-    password VARCHAR(255)
+    email VARCHAR(255),
+    password VARCHAR(255),
+    active BOOLEAN
 );
 
 CREATE TABLE game (
